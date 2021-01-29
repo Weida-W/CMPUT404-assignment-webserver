@@ -78,13 +78,13 @@ class MyWebServer(socketserver.BaseRequestHandler):
             file = open(path,"r")
             data = file.read()   
             if "root" in status:
-                self.request.sendall(bytearray("HTTP/1.1 200 OK\r\n"+"Content-Type:"+type_text+"\r\n "+"\r\n\r\n" +data, "utf-8"))
+                self.request.sendall(bytearray("HTTP/1.1 200 OK\r\n"+"Content-Type:"+type_text+"\r\n\r\n" +data, "utf-8"))
             elif "deep" in status:
-                self.request.sendall(bytearray("HTTP/1.1 301 Moved Permanently\r\n"+"content-type:"+type_text+"\r\n"+"\r\n\r\n"+data, "utf-8"))
+                self.request.sendall(bytearray("HTTP/1.1 301 Moved Permanently\r\n"+"content-type:"+type_text+"\r\n\r\n"+data, "utf-8"))
             elif status == "405":
                 self.request.sendall(bytearray("HTTP/1.1 405 Method Not Allowed\r\n" ,"utf-8"))
         else:
-            self.request.sendall(bytearray("HTTP/1.1 404 File not found\r\n"+"\r\n\r\n The page not find! 404" , "utf-8"))
+            self.request.sendall(bytearray("HTTP/1.1 404 File not found"+"\r\n\r\n The page not find! 404" , "utf-8"))
 
 if __name__ == "__main__":
     HOST, PORT = "localhost", 8080
